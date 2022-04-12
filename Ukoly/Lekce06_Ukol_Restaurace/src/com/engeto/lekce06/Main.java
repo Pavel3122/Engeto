@@ -67,7 +67,7 @@ public class Main {
         // Task 4
         System.out.println(Orders.getTotalTurnoversByDateOrdered());
 
-        //Task 5
+        // Task 5
         System.out.println(Orders.getAllOrderedItemsTitles());
 
         // Task 6
