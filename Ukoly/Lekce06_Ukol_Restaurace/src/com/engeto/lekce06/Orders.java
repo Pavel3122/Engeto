@@ -41,7 +41,7 @@ public class Orders {
             for (OrderItem item : order.getItems()) {
                 if (Items.containsKey(item.getTitle())) {
                     // Increment already existing record in Items HashMap
-                    Items.put(item.getTitle(), Items.get(item.getTitle())*item.getQuantity());
+                    Items.put(item.getTitle(), Items.get(item.getTitle())+item.getQuantity());
                 } else {
                     // Add new Item to Items HashMap
                     Items.put(item.getTitle(), (item.getQuantity()));
@@ -82,6 +82,52 @@ public class Orders {
         String message = "";
         for (LocalDate dateOrdered: Turnovers.keySet()) {
             message += dateOrdered.toString() + "=" + Turnovers.get(dateOrdered).toString() + ",";
+        }
+
+        return message;
+    }
+
+    public static String getAllOrderedItemsTitles() {
+        ArrayList<String> itemTitles = new ArrayList<>();
+
+        HashMap<LocalDate, BigDecimal> Turnovers = new HashMap<>();
+
+        for (Order order : orders) {
+            for (OrderItem item : order.getItems()) {
+                if (!itemTitles.contains(item.getTitle())) {
+                    itemTitles.add(item.getTitle());
+                }
+            }
+        }
+
+        itemTitles.sort(String::compareToIgnoreCase);
+
+        // Print Titles to string
+        String message = "";
+        for (String itemTitle: itemTitles) {
+            message += itemTitle + ",";
+        }
+
+        return message;
+    }
+
+    public static String getOrderCountByTable () {
+        HashMap<Integer, Integer> tableOrders = new HashMap<>();
+
+        for (Order order : orders) {
+            if (tableOrders.containsKey(order.getTableNumber())) {
+                // Increment already existing table in tableOrders HashMap
+                tableOrders.put(order.getTableNumber(), tableOrders.get(order.getTableNumber()) + 1);
+            } else {
+                // Add new table to tableOrders HashMap
+                tableOrders.put(order.getTableNumber(), 1);
+            }
+        }
+
+        // Print table orders to string
+        String message = "Počet objednávek u stolů: ";
+        for (int tableNumber: tableOrders.keySet()) {
+            message += "stůl č." + tableNumber + ":" + tableOrders.get(tableNumber).toString() + ",";
         }
 
         return message;
