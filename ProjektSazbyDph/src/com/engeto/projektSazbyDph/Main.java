@@ -1,4 +1,4 @@
-package com.engeto.projekt_sazby_dph;
+package com.engeto.projektSazbyDph;
 
 public class Main {
 
