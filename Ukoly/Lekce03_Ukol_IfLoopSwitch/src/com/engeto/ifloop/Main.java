@@ -63,13 +63,17 @@ public class Main {
      * @return List načtených hodnot (záporná hodnota není zahrnuta v listu)
      */
     public static List<Integer> storeAllInputInArrayListUntilNegative() {
-        int input;
+        int input = 0;
         List<Integer> intList = new ArrayList<>();
-        do {
+
+        while (input >= 0) {
             input = Support.safeReadInt();
-            if (input >= 0)
-                intList.add(input);
-        } while (input >= 0);
+            intList.add(input);
+        }
+
+        // Remove last element
+        intList.remove(intList.size() - 1);
+
         return intList;
     }
 
@@ -79,7 +83,7 @@ public class Main {
      */
     public static void printAllIntegersFromList(List<Integer> list) {
         for (int num : list) {
-            System.out.printf(String.valueOf(num));
+            System.out.println(num);
         }
     }
 
@@ -89,10 +93,10 @@ public class Main {
      * @return Součet všech čísel v listu.
      */
     public static Integer sumAllIntegersFromList(List<Integer> list) {
-        int sum = 0;
-        for (int num : list) {
+        Integer sum = 0;
+        for (Integer num : list) {
             sum += num;
-        };
+        }
         return sum;
     }
     //endregion
@@ -106,7 +110,7 @@ public class Main {
     public static void printIntegersUnderLimit(List<Integer> list, int limit) {
         for (int num : list) {
             if (num < limit)
-                System.out.printf(String.valueOf(num));
+                System.out.println(num);
         }
     }
 
@@ -125,16 +129,16 @@ public class Main {
         for (int num : list) {
             switch(num) {
                 case 1:
-                    System.out.printf("one");
+                    System.out.println("one");
                     break;
                 case 2:
-                    System.out.printf("two");
+                    System.out.println("two");
                     break;
                 case 3:
-                    System.out.printf("three");
+                    System.out.println("three");
                     break;
                 default:
-                    System.out.printf(String.valueOf(num));
+                    System.out.println(num);
             }
 
         }
