@@ -32,23 +32,23 @@ public class PlantList {
         return this.plantList.get(index);
     }
 
-    public Plant RemoveByIndex(int index) {
+    public Plant removeByIndex(int index) {
         return this.plantList.remove(index);
     }
 
-    public void LoadListFromFile(String filePath) {
+    public void loadListFromFile(String filePath) throws PlantException {
         try(Scanner sc = new Scanner(new FileReader(filePath));){
             while (sc.hasNextLine()){
                 String line = sc.nextLine();
                 String[] arr = line.split("\t");
                 plantList.add(new Plant(arr[0], arr[1], LocalDate.parse(arr[4]), LocalDate.parse(arr[3]), Integer.parseInt(arr[2])));
             }
-        } catch (IOException e){
-            e.printStackTrace();
+        } catch (Exception e){
+            throw new PlantException(e.getMessage());
         }
     }
 
-    public void WriteListToFile(String filePath) {
+    public void writeListToFile(String filePath) throws PlantException {
         try {
             File fout = new File(filePath);
             FileOutputStream fos = new FileOutputStream(fout);
@@ -59,8 +59,8 @@ public class PlantList {
             }
 
             osw.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+            throw new PlantException(e.getMessage());
         }
     }
 }

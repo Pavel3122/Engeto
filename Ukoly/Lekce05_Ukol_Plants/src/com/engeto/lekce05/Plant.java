@@ -41,7 +41,8 @@ public class Plant {
         return watering;
     }
 
-    public void setWatering(LocalDate watering) {
+    public void setWatering(LocalDate watering) throws PlantException {
+        checkWatering(watering);
         this.watering = watering;
     }
 
@@ -49,16 +50,15 @@ public class Plant {
         return frequencyOfWatering;
     }
 
-    public void setFrequencyOfWatering(int frequencyOfWatering) {
+    public void setFrequencyOfWatering(int frequencyOfWatering) throws PlantException {
+        checkFrequencyOfWatering(frequencyOfWatering);
         this.frequencyOfWatering = frequencyOfWatering;
     }
 
-    public Plant(String name, String notes, LocalDate planted, LocalDate watering, int frequencyOfWatering) {
-        if (frequencyOfWatering <= 0)
-            new PlantException("Frequency of watering needs to higher than 0.");
+    public Plant(String name, String notes, LocalDate planted, LocalDate watering, int frequencyOfWatering) throws PlantException {
+        checkFrequencyOfWatering(frequencyOfWatering);
+        checkWatering(watering);
 
-        if (watering.compareTo(planted) < 0)
-            new PlantException("Date of watering needs to be older than date of planting.");
         Name = name;
         Notes = notes;
         this.planted = planted;
@@ -66,11 +66,11 @@ public class Plant {
         this.frequencyOfWatering = frequencyOfWatering;
     }
 
-    public Plant(String name, LocalDate planted, int frequencyOfWatering) {
+    public Plant(String name, LocalDate planted, int frequencyOfWatering) throws PlantException {
         this(name, "", planted, LocalDate.now(), frequencyOfWatering);
     }
 
-    public Plant(String name) {
+    public Plant(String name) throws PlantException {
         this(name, LocalDate.now(), 7);
     }
 
@@ -82,5 +82,15 @@ public class Plant {
         return this.Name + "\t" + this.Notes + "\t" +
                 this.frequencyOfWatering + "\t" + this.watering.toString() + "\t" +
                 this.planted.toString();
+    }
+
+    private void checkFrequencyOfWatering (int frequencyOfWatering) throws PlantException {
+        if (frequencyOfWatering <= 0)
+            throw new PlantException("Frequency of watering needs to higher than 0.");
+    }
+
+    private void checkWatering(LocalDate watering) throws PlantException {
+        if (this.planted != null && watering.isBefore(planted))
+            throw new PlantException("Date of watering needs to be older than date of planting.");
     }
 }
