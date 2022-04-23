@@ -43,8 +43,14 @@ public class PlantList {
                 String[] arr = line.split("\t");
                 plantList.add(new Plant(arr[0], arr[1], LocalDate.parse(arr[4]), LocalDate.parse(arr[3]), Integer.parseInt(arr[2])));
             }
-        } catch (Exception e){
-            throw new PlantException(e.getMessage());
+        } catch (FileNotFoundException e){
+            throw new PlantException("Nenalezen vstupní soubor: " + e.getMessage());
+        }
+        catch (IOException e) {
+            throw new PlantException("Chyba na vstupu při čtení ze vstupního souboru: " + e.getMessage());
+        }
+        catch (Exception e) {
+            throw new PlantException("Neznámá chyba při čtení ze vstupního souboru: " + e.getMessage());
         }
     }
 

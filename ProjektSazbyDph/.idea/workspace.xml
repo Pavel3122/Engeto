@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08306f24-e806-4fd9-b9fc-9f198dc0df1e" name="Changes" comment="workspace xml update">
+      <change afterPath="$PROJECT_DIR$/src/com/engeto/projektSazbyDph/CountryException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ukoly/Lekce05_Ukol_Plants/out/production/Lekce05_Ukol_Plants/com/engeto/lekce05/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ukoly/Lekce05_Ukol_Plants/out/production/Lekce05_Ukol_Plants/com/engeto/lekce05/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ukoly/Lekce05_Ukol_Plants/out/production/Lekce05_Ukol_Plants/com/engeto/lekce05/Plant.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ukoly/Lekce05_Ukol_Plants/out/production/Lekce05_Ukol_Plants/com/engeto/lekce05/Plant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ukoly/Lekce05_Ukol_Plants/out/production/Lekce05_Ukol_Plants/com/engeto/lekce05/PlantList.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Ukoly/Lekce05_Ukol_Plants/out/production/Lekce05_Ukol_Plants/com/engeto/lekce05/PlantList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ukoly/Lekce05_Ukol_Plants/out/production/Lekce05_Ukol_Plants/com/engeto/lekce05/kvetiny_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Ukoly/Lekce05_Ukol_Plants/out/production/Lekce05_Ukol_Plants/com/engeto/lekce05/kvetiny_out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ukoly/Lekce05_Ukol_Plants/src/com/engeto/lekce05/kvetiny_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Ukoly/Lekce05_Ukol_Plants/src/com/engeto/lekce05/kvetiny_out.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +93,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
