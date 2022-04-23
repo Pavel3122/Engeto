@@ -57,9 +57,11 @@ public class Countries {
     }
 
     public static void printAllCountriesVatBelowThreshold() {
+        String ctrStr = "";
         for (Country country : countryListBelowRate) {
-            System.out.println(country.toString());
+            ctrStr += country.getNameAbbreviation() + ", ";
         }
+        System.out.println("Sazba VAT " + Countries.getThresholdVatRate() + " % nebo nižší nebo používají speciální sazbu: " + ctrStr);
     }
 
     public static void sort(ArrayList<Country> list) {

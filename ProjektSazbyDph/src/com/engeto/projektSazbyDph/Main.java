@@ -17,14 +17,20 @@ public class Main {
                 throw new IOException("Invalid input rate");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Chyba při zadání vstupní hodnoty limitu DPH: " + e.getMessage());
+            return;
         }
 
         System.out.println("Entered VAT Rate: " + inputRate);
         Countries.setThresholdVatRate(Integer.parseInt(inputRate));
 
         // Loading input file
-        FileOperations.LoadListFromFile("src/com/engeto/projektSazbyDph/vat-eu.csv");
+        try {
+            FileOperations.loadListFromFile("src/com/engeto/projektSazbyDph/vat-eu.csv");
+        } catch (CountryException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
 
         // Print all countries
         //System.out.println("Printing All:");
@@ -41,6 +47,11 @@ public class Main {
         System.out.println("====================");
         Countries.printAllCountriesVatBelowThreshold();
 
-        FileOperations.WriteListToFile("src/com/engeto/projektSazbyDph/vat-over-" + inputRate + ".txt");
+        try {
+            FileOperations.writeListToFile("src/com/engeto/projektSazbyDph/output/vat-over-" + inputRate + ".txt");
+        } catch (CountryException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
     }
 }
