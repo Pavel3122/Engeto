@@ -48,7 +48,7 @@ public class Main {
         Countries.printAllCountriesVatBelowThreshold();
 
         try {
-            FileOperations.writeListToFile("src/com/engeto/projektSazbyDph/output/vat-over-" + inputRate + ".txt");
+            FileOperations.writeListToFile("src/com/engeto/projektSazbyDph/vat-over-" + inputRate + ".txt");
         } catch (CountryException e) {
             System.out.println(e.getMessage());
             return;
