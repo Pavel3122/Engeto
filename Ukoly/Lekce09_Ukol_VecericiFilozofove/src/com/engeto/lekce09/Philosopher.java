@@ -33,9 +33,8 @@ public class Philosopher implements Runnable {
                                 + " Portions left: " + this.portionsToEat);
                         doAction(": Put down right fork");
                     }
-
                     // Back to thinking
-                    doAction(": Put down left fork. Back to thinking");
+                    doAction(": Put down left fork");
                 }
             }
             System.out.println(Thread.currentThread().getName()
