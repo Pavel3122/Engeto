@@ -4,17 +4,21 @@ public class Philosopher implements Runnable {
     private final Object leftFork;
     private final Object rightFork;
     private Integer portionsToEat;
+    private boolean lastPhilosopher;
 
-    public Philosopher(Object leftFork, Object rightFork) {
+    public Philosopher(Object leftFork, Object rightFork, boolean lastPhilosopher) {
         this.leftFork = leftFork;
         this.rightFork = rightFork;
-        this.portionsToEat = 10000;
+        this.lastPhilosopher = lastPhilosopher;
+        portionsToEat = 10000;
     }
 
-    private void doAction(String action) throws InterruptedException {
-        System.out.println(Thread.currentThread().getName() + " " + action);
-        Thread.sleep(1000);
-        //Thread.sleep(((int) (Math.random() * 100)));
+    public Philosopher(Object leftFork, Object rightFork) {
+        this(leftFork, rightFork, false);
+    }
+
+    private void printAction(String action) throws InterruptedException {
+        System.out.println(Thread.currentThread().getName() + " : " + action);
     }
 
     @Override
@@ -22,19 +26,36 @@ public class Philosopher implements Runnable {
         try {
             while (portionsToEat > 0) {
                 // thinking
-                doAction(": Thinking");
-                synchronized (leftFork) {
-                    doAction(": Picked up left fork");
+                printAction("Thinking");
+                if(lastPhilosopher) {
+                    // Deadlock protection - opposite use of forks by last philosopher
                     synchronized (rightFork) {
-                        // eating
-                        doAction(": Picked up right fork - eating");
-                        this.portionsToEat -= 2000;
-                        System.out.println(Thread.currentThread().getName()
-                                + " Portions left: " + this.portionsToEat);
-                        doAction(": Put down right fork");
+                        printAction("Picked up right fork");
+                        synchronized (leftFork) {
+                            // eating
+                            printAction("Picked up left fork - eating");
+                            portionsToEat -= 1;
+                            System.out.println(Thread.currentThread().getName()
+                                    + " Portions left: " + portionsToEat);
+                            printAction("Put down left fork");
+                        }
+                        // Back to thinking
+                        printAction("Put down right fork");
                     }
-                    // Back to thinking
-                    doAction(": Put down left fork");
+                } else {
+                    synchronized (leftFork) {
+                        printAction("Picked up left fork");
+                        synchronized (rightFork) {
+                            // eating
+                            printAction("Picked up right fork - eating");
+                            portionsToEat -= 1;
+                            System.out.println(Thread.currentThread().getName()
+                                    + " Portions left: " + portionsToEat);
+                            printAction("Put down right fork");
+                        }
+                        // Back to thinking
+                        printAction("Put down left fork");
+                    }
                 }
             }
             System.out.println(Thread.currentThread().getName()

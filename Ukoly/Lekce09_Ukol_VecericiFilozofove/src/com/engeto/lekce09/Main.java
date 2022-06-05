@@ -4,28 +4,29 @@ public class Main {
 
     public static void main(String[] args) {
         // Prepare philosophers and forks
-        Philosopher[] philosophers = new Philosopher[10];
-        Object[] forks = new Object[philosophers.length];
+        int philospohersAndForksCount = 10;
+
+        Object[] forks = new Object[philospohersAndForksCount];
 
         for (int i = 0; i < forks.length; i++) {
             forks[i] = new Object();
         }
 
-        for (int i = 0; i < philosophers.length; i++) {
+        for (int i = 0; i < philospohersAndForksCount; i++) {
+            Philosopher philosopher;
             Object leftFork = forks[i];
             Object rightFork = forks[(i + 1) % forks.length];
 
-            // Deadlock protection
-            if (i == philosophers.length - 1) {
-                // The last philosopher picks up the right fork first
-                philosophers[i] = new Philosopher(rightFork, leftFork);
+            if (i == philospohersAndForksCount - 1) {
+                // Deadlock protection - The last philosopher property
+                philosopher = new Philosopher(leftFork, rightFork, true);
             } else {
-                philosophers[i] = new Philosopher(leftFork, rightFork);
+                philosopher = new Philosopher(leftFork, rightFork);
             }
 
             // Philosopher starts
             Thread t
-                    = new Thread(philosophers[i], "Philosopher " + (i + 1));
+                    = new Thread(philosopher, "Philosopher " + (i + 1));
             t.start();
         }
     }
