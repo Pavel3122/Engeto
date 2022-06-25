@@ -4,7 +4,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import javax.persistence.*;
 
-@EnableAutoConfiguration
 @Entity
 @Table(name="item")
 public class Item {
