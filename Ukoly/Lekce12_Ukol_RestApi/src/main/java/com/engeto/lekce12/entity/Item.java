@@ -1,12 +1,15 @@
 package com.engeto.lekce12.entity;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
 import javax.persistence.*;
 
+@EnableAutoConfiguration
 @Entity
 @Table(name="item")
 public class Item {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -14,6 +17,9 @@ public class Item {
 
     @Column
     private String description;
+
+    public Item(){
+    }
 
     public Item(String name, String description) {
         this.name = name;
