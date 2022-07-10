@@ -10,7 +10,10 @@ public class Country {
     private Long id;
 
     @Column
-    private String name;
+    private String nameShort;
+
+    @Column
+    private String nameLong;
 
     @Column
     private String comment;
@@ -33,9 +36,9 @@ public class Country {
     @Column
     private BigDecimal parkingRate;
 
-    public Country(Long id, String name, String comment, String isoDuplicateOf, BigDecimal standardRate, BigDecimal reducedRate, BigDecimal reducedRateAlt, BigDecimal superReducedRate, BigDecimal parkingRate) {
-        this.id = id;
-        this.name = name;
+    public Country(String nameShort, String nameLong, String comment, String isoDuplicateOf, BigDecimal standardRate, BigDecimal reducedRate, BigDecimal reducedRateAlt, BigDecimal superReducedRate, BigDecimal parkingRate) {
+        this.nameShort = nameShort;
+        this.nameLong = nameLong;
         this.comment = comment;
         this.isoDuplicateOf = isoDuplicateOf;
         this.standardRate = standardRate;
@@ -45,12 +48,24 @@ public class Country {
         this.parkingRate = parkingRate;
     }
 
-    public String getName() {
-        return name;
+    public Long getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getNameShort() {
+        return nameShort;
+    }
+
+    public void setNameShort(String nameShort) {
+        this.nameShort = nameShort;
+    }
+
+    public String getNameLong() {
+        return nameLong;
+    }
+
+    public void setNameLong(String nameLong) {
+        this.nameLong = nameLong;
     }
 
     public String getComment() {
