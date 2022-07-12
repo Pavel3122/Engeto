@@ -29,7 +29,10 @@ public class Application {
         applicationContext = SpringApplication.run(Application.class, args);
         countryService = applicationContext.getBean(CountryService.class);
 
+        // Load rates by HTTP Request
         loadInputRates();
+
+        // Read user input from console
         readUserInput();
     }
 

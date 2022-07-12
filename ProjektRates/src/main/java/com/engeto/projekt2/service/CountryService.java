@@ -5,7 +5,6 @@ import com.engeto.projekt2.repository.CountryRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.math.BigDecimal;
 
 @Service
 public class CountryService {
