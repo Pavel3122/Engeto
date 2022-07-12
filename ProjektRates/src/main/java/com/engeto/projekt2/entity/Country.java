@@ -36,6 +36,9 @@ public class Country {
     @Column
     private BigDecimal parkingRate;
 
+    public Country(){
+    }
+
     public Country(String nameShort, String nameLong, String comment, String isoDuplicateOf, BigDecimal standardRate, BigDecimal reducedRate, BigDecimal reducedRateAlt, BigDecimal superReducedRate, BigDecimal parkingRate) {
         this.nameShort = nameShort;
         this.nameLong = nameLong;

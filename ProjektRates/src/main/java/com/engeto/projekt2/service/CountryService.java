@@ -5,6 +5,7 @@ import com.engeto.projekt2.repository.CountryRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 
 @Service
 public class CountryService {
@@ -18,12 +19,16 @@ public class CountryService {
         return countryRepository.findById(id).orElseThrow();
     }
 
+    public Country getFirstCountryByNameShort(String nameShort) {
+        return countryRepository.findFirstByNameShort(nameShort).orElseThrow();
+    }
+
     public Country saveCountry(Country country) {
         return countryRepository.save(country);
     }
 
-    public Iterable<Country> getAllItems() {return countryRepository.findAll(); }
+    public Iterable<Country> getAllCountries() {return countryRepository.findAll(); }
 
     @Transactional
-    public void deleteItemById(Long id) {countryRepository.deleteCountryById(id);}
+    public void deleteCountryById(Long id) {countryRepository.deleteCountryById(id);}
 }
