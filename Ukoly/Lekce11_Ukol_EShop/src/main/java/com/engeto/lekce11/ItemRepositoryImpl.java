@@ -2,6 +2,7 @@ package com.engeto.lekce11;
 
 import org.hibernate.Session;
 
+import org.hibernate.Transaction;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
@@ -23,7 +24,7 @@ public class ItemRepositoryImpl implements ItemRepository{
 
     @Transactional
     public void deleteAllOutOfStockItems() {
-        org.hibernate.Transaction txn = session.beginTransaction();
+        Transaction txn = session.beginTransaction();
         session.createNativeQuery("DELETE FROM `item` WHERE (`numberInStock` = 0);")
                 .executeUpdate();
         txn.commit();
@@ -37,15 +38,15 @@ public class ItemRepositoryImpl implements ItemRepository{
 
     @Transactional
     public void saveItem(Item item) {
-        org.hibernate.Transaction txn = session.beginTransaction();
+        Transaction txn = session.beginTransaction();
         session.persist(item);
         txn.commit();
     }
 
     @Transactional
     public void updatePrice(Integer id, BigDecimal newPrice) {
-        org.hibernate.Transaction txn = session.beginTransaction();
-        session.createQuery("update Item i set i.price = :price where i.id = :id")
+        Transaction txn = session.beginTransaction();
+        session.createQuery("UPDATE Item i SET i.price = :price WHERE i.id = :id")
                 .setParameter("price", newPrice)
                 .setParameter("id", id)
                 .executeUpdate();

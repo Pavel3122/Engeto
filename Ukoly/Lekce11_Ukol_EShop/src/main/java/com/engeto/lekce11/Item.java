@@ -8,10 +8,10 @@ import java.math.BigDecimal;
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", updatable = false, nullable = false)
+    @Column(updatable = false, nullable = false)
     private int id;
 
-    @Column(name="partNo")
+    @Column
     private String partNo;
     @Column
     private String serialNo;
