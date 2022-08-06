@@ -2,6 +2,7 @@ package com.engeto.projekt2.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Comparator;
 
 @Entity
 public class Country {
@@ -50,6 +51,18 @@ public class Country {
         this.superReducedRate = superReducedRate;
         this.parkingRate = parkingRate;
     }
+
+    public static Comparator<Country> StandardRateComparator = new Comparator<Country>() {
+
+        public int compare(Country c1, Country c2) {
+            BigDecimal countryStandardRate1 = c1.getStandardRate();
+            BigDecimal countryStandardRate2 = c2.getStandardRate();
+
+            //ascending order
+            return countryStandardRate1.compareTo(countryStandardRate2);
+            //descending order
+            //return countryStandardRate2.compareTo(countryStandardRate1);
+        }};
 
     public Long getId() {
         return id;
