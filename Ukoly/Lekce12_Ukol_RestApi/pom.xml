@@ -52,6 +52,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>spring-rest-api</finalName>
     </build>
-
 </project>
